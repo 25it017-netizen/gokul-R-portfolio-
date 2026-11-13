@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Anybody", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-ivory: #F1EEE5;
+  --color-paper: #FAF9F5;
+  --color-charcoal: #20211E;
+  --color-orange: #C65B36;
+  --color-olive: #777B61;
+  --color-softgrey: #A5A49B;
+}
+
+@layer base {
+  html {
+    background-color: #F1EEE5;
+    color: #20211E;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #F1EEE5;
+    color: #20211E;
+    overflow-x: clip;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Editorial Utilities */
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.font-display-sans {
+  font-family: var(--font-sans);
+}
+
+.font-tech {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle architectural grid background */
+.journal-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(32, 33, 30, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 33, 30, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Slow technical signal dash animation */
+@keyframes signalFlow {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-signal-slow {
+  stroke-dasharray: 6 14;
+  animation: signalFlow 18s linear infinite;
+}
+
+.animate-signal-reverse {
+  stroke-dasharray: 4 18;
+  animation: signalFlow 24s linear infinite reverse;
+}
+
+/* Editorial ticker marquee */
+@keyframes editorialMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-editorial-marquee {
+  display: flex;
+  width: max-content;
+  animation: editorialMarquee 42s linear infinite;
+}
+
+.animate-editorial-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-signal-slow,
+  .animate-signal-reverse,
+  .animate-editorial-marquee {
+    animation: none;
+  }
+}
