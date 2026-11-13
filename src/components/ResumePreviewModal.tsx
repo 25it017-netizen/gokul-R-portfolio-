@@ -68,7 +68,7 @@ export function ResumePreviewModal({ open, onClose }: ResumePreviewModalProps) {
 
         <div className="flex-1 bg-[#20211E]/5 overflow-hidden">
           <iframe
-            src="/api/resume?inline=1"
+            src={`${RESUME_PDF_PATH}?inline=1`}
             title="Gokula Kannan R Resume PDF"
             className="w-full h-full border-0"
           />
